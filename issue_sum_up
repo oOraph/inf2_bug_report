@@ -1,0 +1,21 @@
+Observed on inf2 48xlarge instances running containers with all the neuron devices attached to them 
+
+The container feels frozen and unresponsive. Killing the container take ages (did not try to kill it directly, I let kubelet + containerd do their job, but the grace period set for the k8s pod was 30 s and the containerd sandbox stayed there for far longer)... The attached dmesg stack trace then appears, definitely showing that something unusual happens on the node
+
+When we observe this the neurons are not in use in the container (they are just attached), for example we can have it by executing a container in which all we do is calling sth like the following script
+
+```
+import os
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
+
+from huggingface_hub import HfApi
+
+
+api = HfApi(token=os.environ.get("YOUR_TOKEN"))
+# Download the repository to the workdir and filter out non-framework specific weights
+api.snapshot_download(
+    "meta-llama/Meta-Llama-3-70B-Instruct",
+    local_dir="/repository",
+)
+
+```
