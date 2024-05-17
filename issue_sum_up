@@ -1,3 +1,5 @@
+We are having troubles spawning inference service hosting the meta-llama/Meta-Llama-3-70B-Instruct model in containers hosted on inf2.48xlarge
+
 Observed on inf2 48xlarge instances running containers with all the neuron devices attached to them 
 
 The container feels frozen and unresponsive. Killing the container take ages (did not try to kill it directly, I let kubelet + containerd do their job, but the grace period set for the k8s pod was 30 s and the containerd sandbox stayed there for far longer)... The attached dmesg stack trace then appears, definitely showing that something unusual happens on the node
