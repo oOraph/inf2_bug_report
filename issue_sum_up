@@ -1,6 +1,6 @@
 We are having troubles spawning inference service hosting the meta-llama/Meta-Llama-3-70B-Instruct model in containers hosted on inf2.48xlarge
 
-Observed on inf2 48xlarge instances running containers with all the neuron devices attached to them 
+Observed on inf2 48xlarge instances running containers with all the neuron devices attached to them. This happens when the container init process ends. 
 
 The container feels frozen and unresponsive. Killing the container take ages (did not try to kill it directly, I let kubelet + containerd do their job, but the grace period set for the k8s pod was 30 s and the containerd sandbox stayed there for far longer)... The attached dmesg stack trace then appears, definitely showing that something unusual happens on the node
 
@@ -38,3 +38,5 @@ root      28260  0.0  0.0 722928 14016 ?        Sl   23:08   0:00 /usr/bin/conta
 WARN[0000] runtime connect using default endpoints: [unix:///var/run/dockershim.sock unix:///run/containerd/containerd.sock unix:///run/crio/crio.sock unix:///var/run/cri-dockerd.sock]. As the default settings are now deprecated, you should set the endpoint instead
 
 -> exec does not respond, impossible to interrupt...
+
+-> container is there but like dead, no stats reported, and the init process is dead already
