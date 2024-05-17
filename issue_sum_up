@@ -21,3 +21,20 @@ api.snapshot_download(
 )
 
 ```
+
+
+Container is like frozen
+
+[root@ip-10-41-45-105 ec2-user]# crictl ps  | grep c9b677e8355c2
+c9b677e8355c2       693ce7bff779b       13 minutes ago      Running             repository-loader           0                   4f8e56fda015f       test-raph-neuronx-2
+
+
+[root@ip-10-41-45-105 ec2-user]# ps faux | grep -C 10 4f8e56fda015f
+root      28260  0.0  0.0 722928 14016 ?        Sl   23:08   0:00 /usr/bin/containerd-shim-runc-v2 -namespace k8s.io -id 4f8e56fda015fee11b1846575e729720032892a8de5b38aff3acb85361441623 -address /run/containerd/containerd.sock
+65535     28289  0.0  0.0    972     4 ?        Ss   23:08   0:00  \_ /pause
+
+
+[root@ip-10-41-45-105 ec2-user]# crictl exec -it c9b677e8355c2 /bin/bash
+WARN[0000] runtime connect using default endpoints: [unix:///var/run/dockershim.sock unix:///run/containerd/containerd.sock unix:///run/crio/crio.sock unix:///var/run/cri-dockerd.sock]. As the default settings are now deprecated, you should set the endpoint instead
+
+-> exec does not respond, impossible to interrupt...
