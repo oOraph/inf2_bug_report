@@ -1,0 +1,2 @@
+[root@ip-10-41-42-216 ec2-user]# uname -a
+Linux ip-10-41-42-216.ec2.internal 5.10.213-201.855.amzn2.x86_64 #1 SMP Mon Mar 25 18:16:11 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
