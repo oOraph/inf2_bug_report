@@ -1,0 +1,50 @@
+[lun. mai 20 21:54:13 2024] INFO: task exe:58170 blocked for more than 252 seconds.
+[lun. mai 20 21:54:13 2024]       Tainted: G           OE     5.10.213-201.855.amzn2.x86_64 #1
+[lun. mai 20 21:54:13 2024] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[lun. mai 20 21:54:13 2024] task:exe             state:D stack:    0 pid:58170 ppid: 25669 flags:0x00000080
+[lun. mai 20 21:54:13 2024] Call Trace:
+[lun. mai 20 21:54:13 2024]  __schedule+0x1f9/0x660
+[lun. mai 20 21:54:13 2024]  schedule+0x46/0xb0
+[lun. mai 20 21:54:13 2024]  rwsem_down_write_slowpath+0x24b/0x4c0
+[lun. mai 20 21:54:13 2024]  do_reconfigure_mnt+0x69/0x200
+[lun. mai 20 21:54:13 2024]  __x64_sys_mount+0x107/0x140
+[lun. mai 20 21:54:13 2024]  do_syscall_64+0x33/0x40
+[lun. mai 20 21:54:14 2024]  entry_SYSCALL_64_after_hwframe+0x62/0xc7
+[lun. mai 20 21:54:14 2024] RIP: 0033:0x7fdcfd236eda
+[lun. mai 20 21:54:14 2024] RSP: 002b:00007fff24cef678 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[lun. mai 20 21:54:14 2024] RAX: ffffffffffffffda RBX: 00007fff24cef680 RCX: 00007fdcfd236eda
+[lun. mai 20 21:54:14 2024] RDX: 000055d65eb9a591 RSI: 00007fff24cef680 RDI: 000055d65eb9a591
+[lun. mai 20 21:54:14 2024] RBP: 000055d660e9f280 R08: 000055d65eb9a591 R09: 0000c00000000000
+[lun. mai 20 21:54:14 2024] R10: 0000000000001021 R11: 0000000000000246 R12: 000055d660e9f26a
+[lun. mai 20 21:54:14 2024] R13: 0000000000000010 R14: 000055d660e9f26a R15: 000055d660e9f280
+[lun. mai 20 21:54:14 2024] INFO: task exe:58178 blocked for more than 253 seconds.
+[lun. mai 20 21:54:14 2024]       Tainted: G           OE     5.10.213-201.855.amzn2.x86_64 #1
+[lun. mai 20 21:54:14 2024] "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+[lun. mai 20 21:54:14 2024] task:exe             state:D stack:    0 pid:58178 ppid: 25669 flags:0x00000080
+[lun. mai 20 21:54:14 2024] Call Trace:
+[lun. mai 20 21:54:14 2024]  __schedule+0x1f9/0x660
+[lun. mai 20 21:54:14 2024]  schedule+0x46/0xb0
+[lun. mai 20 21:54:15 2024]  rwsem_down_write_slowpath+0x24b/0x4c0
+[lun. mai 20 21:54:15 2024]  do_reconfigure_mnt+0x69/0x200
+[lun. mai 20 21:54:15 2024]  __x64_sys_mount+0x107/0x140
+[lun. mai 20 21:54:15 2024]  do_syscall_64+0x33/0x40
+[lun. mai 20 21:54:15 2024]  entry_SYSCALL_64_after_hwframe+0x62/0xc7
+[lun. mai 20 21:54:15 2024] RIP: 0033:0x7fe1186a0eda
+[lun. mai 20 21:54:15 2024] RSP: 002b:00007ffe5c16a138 EFLAGS: 00000246 ORIG_RAX: 00000000000000a5
+[lun. mai 20 21:54:15 2024] RAX: ffffffffffffffda RBX: 00007ffe5c16a140 RCX: 00007fe1186a0eda
+[lun. mai 20 21:54:15 2024] RDX: 000055ba3c19a591 RSI: 00007ffe5c16a140 RDI: 000055ba3c19a591
+[lun. mai 20 21:54:15 2024] RBP: 000055ba3db57280 R08: 000055ba3c19a591 R09: 0000c00000000000
+[lun. mai 20 21:54:15 2024] R10: 0000000000001021 R11: 0000000000000246 R12: 000055ba3db5726a
+[lun. mai 20 21:54:15 2024] R13: 0000000000000010 R14: 000055ba3db5726a R15: 000055ba3db57280
+[root@ip-10-41-35-153 ec2-user]# date
+lun. mai 20 21:57:41 UTC 2024
+[root@ip-10-41-35-153 ec2-user]# lsblk
+NAME          MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+nvme0n1       259:0    0  1,6T  0 disk 
+├─nvme0n1p1   259:1    0  1,6T  0 part /
+└─nvme0n1p128 259:2    0    1M  0 part 
+[root@ip-10-41-35-153 ec2-user]# blkid
+/dev/nvme0n1: PTUUID="1a7ee478-e5ef-40e0-8636-ce5c094829f4" PTTYPE="gpt"
+/dev/nvme0n1p1: LABEL="/" UUID="9c1eee52-5e8d-4948-8929-ae5a65aab30c" TYPE="xfs" PARTLABEL="Linux" PARTUUID="18b295f0-a714-473a-af70-85a7bcdd1023"
+/dev/nvme0n1p128: PARTLABEL="BIOS Boot Partition" PARTUUID="7d11d50e-467e-456c-bb8d-3a3de314cd3a"
+

@@ -95,6 +95,7 @@ spec:
   serviceAccount: default
   serviceAccountName: default
   terminationGracePeriodSeconds: 30
+  tolerations:
   - effect: NoSchedule
     key: aws.amazon.com/neuron
     operator: Exists
