@@ -1,0 +1,56 @@
+[   50.312403] watchdog: BUG: soft lockup - CPU#104 stuck for 22s! [swapper/104:0]
+[   50.356840] Modules linked in: acpi_cpufreq(-) amd64_edac_mod(-) sunrpc mousedev crc32_pclmul ghash_clmulni_intel aesni_intel ena crypto_simd ptp cryptd br_netfilter pps_core glue_helper psmouse bridge stp button llc overlay crc32c_intel
+[   50.478041] CPU: 104 PID: 0 Comm: swapper/104 Not tainted 5.10.213-201.855.amzn2.x86_64 #1
+[   50.528212] Hardware name: Amazon EC2 inf2.48xlarge/, BIOS 1.0 10/16/2017
+[   50.569775] RIP: 0010:__do_softirq+0x6e/0x26d
+[   50.597828] Code: f7 ff ff 89 74 24 14 65 81 05 aa ee 41 44 00 01 00 00 c7 44 24 10 0a 00 00 00 65 66 c7 05 18 23 43 44 00 00 fb b8 ff ff ff ff <49> c7 c3 c0 60 60 bc 41 0f bc c7 41 89 c4 41 83 c4 01 74 76 48 98
+[   50.706423] RSP: 0018:ffff98f21a160fa8 EFLAGS: 00000206
+[   50.738900] RAX: 00000000ffffffff RBX: 0000000000000000 RCX: 0000000000000838
+[   50.782481] RDX: 0000000000000000 RSI: 0000000000200042 RDI: 0000000000000000
+[   50.825933] RBP: ffff98f218cabdb0 R08: ffff8ba682a26360 R09: 7fffffffffffffff
+[   50.869474] R10: 00000006dc230282 R11: 000000001e84d433 R12: 0000000000000001
+[   50.913034] R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000282
+[   50.956541] FS:  0000000000000000(0000) GS:ffff8ba682a00000(0000) knlGS:0000000000000000
+[   51.005489] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   51.054667] CR2: 00005654dd6cf4b0 CR3: 000000010c0d8003 CR4: 00000000003706e0
+[   51.111939] Call Trace:
+[   51.142531]  <IRQ>
+[   51.170761]  ? srso_alias_return_thunk+0x5/0x7f
+[   51.213267]  ? show_trace_log_lvl+0x26b/0x2d9
+[   51.254516]  ? show_trace_log_lvl+0x26b/0x2d9
+[   51.296100]  ? asm_call_irq_on_stack+0x12/0x20
+[   51.337859]  ? lockup_detector_update_enable+0x50/0x50
+[   51.383687]  ? watchdog_timer_fn+0x1bb/0x210
+[   51.424546]  ? __run_hrtimer+0x5e/0x190
+[   51.462863]  ? __hrtimer_run_queues+0x86/0xe0
+[   51.504394]  ? hrtimer_interrupt+0x110/0x2c0
+[   51.545251]  ? handle_irq_event+0x73/0xaf
+[   51.584706]  ? __sysvec_apic_timer_interrupt+0x5f/0xe0
+[   51.630386]  ? sysvec_apic_timer_interrupt+0x31/0x80
+[   51.675048]  ? asm_sysvec_apic_timer_interrupt+0x12/0x20
+[   51.721635]  ? __do_softirq+0x6e/0x26d
+[   51.759484]  asm_call_irq_on_stack+0x12/0x20
+[   51.800240]  </IRQ>
+[   51.828895]  do_softirq_own_stack+0x37/0x50
+[   51.869079]  irq_exit_rcu+0x8c/0xc0
+[   51.905385]  sysvec_apic_timer_interrupt+0x36/0x80
+[   51.948993]  asm_sysvec_apic_timer_interrupt+0x12/0x20
+[   51.994462] RIP: 0010:cpuidle_enter_state+0xd2/0x350
+[   52.039205] Code: 49 89 c5 0f 1f 44 00 00 31 ff e8 f9 2a 99 ff 45 84 ff 74 12 9c 58 f6 c4 02 0f 85 5a 02 00 00 31 ff e8 f2 38 a0 ff fb 45 85 f6 <0f> 88 ed 00 00 00 49 63 c6 4c 2b 2c 24 48 8d 14 40 48 8d 0c 90 48
+[   52.187982] RSP: 0018:ffff98f218cabe98 EFLAGS: 00000202
+[   52.233880] RAX: ffff8ba682a32bc0 RBX: ffff8c088078d400 RCX: 00000000ffffffff
+[   52.289626] RDX: 0000000000000012 RSI: 0000000000000012 RDI: 0000000000000000
+[   52.345284] RBP: 0000000000000002 R08: 00000006a26098e5 R09: 000000000000028a
+[   52.400956] R10: ffff8ba682a31b04 R11: 0000000000000322 R12: ffffffffbce7b680
+[   52.456414] R13: 00000006a26098e5 R14: 0000000000000002 R15: 0000000000000000
+[   52.512124]  ? cpuidle_enter_state+0xb7/0x350
+[   52.552590]  cpuidle_enter+0x29/0x40
+[   52.588767]  cpuidle_idle_call+0x115/0x170
+[   52.627822]  do_idle+0x6d/0xd0
+[   52.661025]  cpu_startup_entry+0x19/0x20
+[   52.699038]  secondary_startup_64_no_verify+0xb0/0xbb
+[  112.578899] neuron: loading out-of-tree module taints kernel.
+[  112.608501] neuron: module verification failed: signature and/or required key missing - tainting kernel
+[  112.730024] Neuron Driver Started with Version:2.16.7.0-1355be842607c13a01a0008d67da2f48b0c5ec05
+[  112.731796] neuron-driver 0000:10:1d.0: can't derive routing for PCI INT A
+[  112.972586] neuron-driver 0000:10:1d.0: PCI INT A: no GSI
